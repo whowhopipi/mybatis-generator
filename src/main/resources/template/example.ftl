@@ -5,270 +5,270 @@ import java.util.Date;
 import java.util.List;
 
 public class ${exampleName} {
-protected String orderByClause;
+    protected String orderByClause;
 
-protected boolean distinct;
+    protected boolean distinct;
 
-protected List<Criteria> oredCriteria;
+    protected List<Criteria> oredCriteria;
 
     public ${exampleName}() {
-    oredCriteria = new ArrayList<Criteria>();
-        }
+        oredCriteria = new ArrayList<Criteria>();
+    }
 
-        public void setOrderByClause(String orderByClause) {
+    public void setOrderByClause(String orderByClause) {
         this.orderByClause = orderByClause;
-        }
+    }
 
-        public String getOrderByClause() {
+    public String getOrderByClause() {
         return orderByClause;
-        }
+    }
 
-        public void setDistinct(boolean distinct) {
+    public void setDistinct(boolean distinct) {
         this.distinct = distinct;
-        }
+    }
 
-        public boolean isDistinct() {
+    public boolean isDistinct() {
         return distinct;
+    }
+
+    public List<Criteria> getOredCriteria() {
+        return oredCriteria;
+    }
+
+    public void or(Criteria criteria) {
+        oredCriteria.add(criteria);
+    }
+
+    public Criteria or() {
+        Criteria criteria = createCriteriaInternal();
+        oredCriteria.add(criteria);
+        return criteria;
+    }
+
+    public Criteria createCriteria() {
+        Criteria criteria = createCriteriaInternal();
+        if (oredCriteria.size() == 0) {
+            oredCriteria.add(criteria);
+        }
+        return criteria;
+    }
+
+    protected Criteria createCriteriaInternal() {
+        Criteria criteria = new Criteria();
+        return criteria;
+    }
+
+    public void clear() {
+        oredCriteria.clear();
+        orderByClause = null;
+        distinct = false;
+    }
+
+    protected abstract static class GeneratedCriteria {
+        protected List<Criterion> criteria;
+
+        protected GeneratedCriteria() {
+            super();
+            criteria = new ArrayList<Criterion>();
         }
 
-        public List<Criteria> getOredCriteria() {
-            return oredCriteria;
-            }
+        public boolean isValid() {
+            return criteria.size() > 0;
+        }
 
-            public void or(Criteria criteria) {
-            oredCriteria.add(criteria);
-            }
-
-            public Criteria or() {
-            Criteria criteria = createCriteriaInternal();
-            oredCriteria.add(criteria);
+        public List<Criterion> getAllCriteria() {
             return criteria;
-            }
+        }
 
-            public Criteria createCriteria() {
-            Criteria criteria = createCriteriaInternal();
-            if (oredCriteria.size() == 0) {
-            oredCriteria.add(criteria);
-            }
+        public List<Criterion> getCriteria() {
             return criteria;
+        }
+
+        protected void addCriterion(String condition) {
+            if (condition == null) {
+                throw new RuntimeException("Value for condition cannot be null");
             }
+            criteria.add(new Criterion(condition));
+        }
 
-            protected Criteria createCriteriaInternal() {
-            Criteria criteria = new Criteria();
-            return criteria;
+        protected void addCriterion(String condition, Object value, String property) {
+            if (value == null) {
+                throw new RuntimeException("Value for " + property + " cannot be null");
             }
+            criteria.add(new Criterion(condition, value));
+        }
 
-            public void clear() {
-            oredCriteria.clear();
-            orderByClause = null;
-            distinct = false;
+        protected void addCriterion(String condition, Object value1, Object value2, String property) {
+            if (value1 == null || value2 == null) {
+                throw new RuntimeException("Between values for " + property + " cannot be null");
             }
+            criteria.add(new Criterion(condition, value1, value2));
+        }
 
-            protected abstract static class GeneratedCriteria {
-            protected List<Criterion> criteria;
+<#list table.columns as ci>
+        public Criteria and${ci.name2}IsNull() {
+            addCriterion("${ci.code} is null");
+            return (Criteria) this;
+        }
 
-                protected GeneratedCriteria() {
-                super();
-                criteria = new ArrayList<Criterion>();
-                    }
+        public Criteria and${ci.name2}IsNotNull() {
+            addCriterion("${ci.code} is not null");
+            return (Criteria) this;
+        }
 
-                    public boolean isValid() {
-                    return criteria.size() > 0;
-                    }
+        public Criteria and${ci.name2}EqualTo(${ci.javaType} value) {
+            addCriterion("${ci.code} =", value, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                    public List<Criterion> getAllCriteria() {
-                        return criteria;
-                        }
+        public Criteria and${ci.name2}NotEqualTo(${ci.javaType} value) {
+            addCriterion("${ci.code} <>", value, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                        public List<Criterion> getCriteria() {
-                            return criteria;
-                            }
+        public Criteria and${ci.name2}GreaterThan(${ci.javaType} value) {
+            addCriterion("${ci.code} >", value, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                            protected void addCriterion(String condition) {
-                            if (condition == null) {
-                            throw new RuntimeException("Value for condition cannot be null");
-                            }
-                            criteria.add(new Criterion(condition));
-                            }
+        public Criteria and${ci.name2}GreaterThanOrEqualTo(${ci.javaType} value) {
+            addCriterion("${ci.code} >=", value, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                            protected void addCriterion(String condition, Object value, String property) {
-                            if (value == null) {
-                            throw new RuntimeException("Value for " + property + " cannot be null");
-                            }
-                            criteria.add(new Criterion(condition, value));
-                            }
+        public Criteria and${ci.name2}LessThan(${ci.javaType} value) {
+            addCriterion("${ci.code} <", value, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                            protected void addCriterion(String condition, Object value1, Object value2, String property) {
-                            if (value1 == null || value2 == null) {
-                            throw new RuntimeException("Between values for " + property + " cannot be null");
-                            }
-                            criteria.add(new Criterion(condition, value1, value2));
-                            }
+        public Criteria and${ci.name2}LessThanOrEqualTo(${ci.javaType} value) {
+            addCriterion("${ci.code} <=", value, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                            <#list table.columns as ci>
-                                public Criteria and${ci.name2}IsNull() {
-                                addCriterion("${ci.code} is null");
-                                return (Criteria) this;
-                                }
+        public Criteria and${ci.name2}Like(${ci.javaType} value) {
+            addCriterion("${ci.code} like", value, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                                public Criteria and${ci.name2}IsNotNull() {
-                                addCriterion("${ci.code} is not null");
-                                return (Criteria) this;
-                                }
+        public Criteria and${ci.name2}NotLike(${ci.javaType} value) {
+            addCriterion("${ci.code} not like", value, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                                public Criteria and${ci.name2}EqualTo(${ci.javaType} value) {
-                                addCriterion("${ci.code} =", value, "${ci.name}");
-                                return (Criteria) this;
-                                }
+        public Criteria and${ci.name2}In(List<${ci.javaType}> values) {
+            addCriterion("${ci.code} in", values, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                                public Criteria and${ci.name2}NotEqualTo(${ci.javaType} value) {
-                                addCriterion("${ci.code} <>", value, "${ci.name}");
-                                return (Criteria) this;
-                                }
+        public Criteria and${ci.name2}NotIn(List<${ci.javaType}> values) {
+            addCriterion("${ci.code} not in", values, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                                public Criteria and${ci.name2}GreaterThan(${ci.javaType} value) {
-                                addCriterion("${ci.code} >", value, "${ci.name}");
-                                return (Criteria) this;
-                                }
+        public Criteria and${ci.name2}Between(${ci.javaType} value1, ${ci.javaType} value2) {
+            addCriterion("${ci.code} between", value1, value2, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                                public Criteria and${ci.name2}GreaterThanOrEqualTo(${ci.javaType} value) {
-                                addCriterion("${ci.code} >=", value, "${ci.name}");
-                                return (Criteria) this;
-                                }
+        public Criteria and${ci.name2}NotBetween(${ci.javaType} value1, ${ci.javaType} value2) {
+            addCriterion("${ci.code} not between", value1, value2, "${ci.name}");
+            return (Criteria) this;
+        }
 
-                                public Criteria and${ci.name2}LessThan(${ci.javaType} value) {
-                                addCriterion("${ci.code} <", value, "${ci.name}");
-                                return (Criteria) this;
-                                }
+</#list>
+    }
 
-                                public Criteria and${ci.name2}LessThanOrEqualTo(${ci.javaType} value) {
-                                addCriterion("${ci.code} <=", value, "${ci.name}");
-                                return (Criteria) this;
-                                }
+    public static class Criteria extends GeneratedCriteria {
 
-                                public Criteria and${ci.name2}Like(${ci.javaType} value) {
-                                addCriterion("${ci.code} like", value, "${ci.name}");
-                                return (Criteria) this;
-                                }
+        protected Criteria() {
+            super();
+        }
+    }
 
-                                public Criteria and${ci.name2}NotLike(${ci.javaType} value) {
-                                addCriterion("${ci.code} not like", value, "${ci.name}");
-                                return (Criteria) this;
-                                }
+    public static class Criterion {
+        private String condition;
 
-                                public Criteria and${ci.name2}In(List<${ci.javaType}> values) {
-                                addCriterion("${ci.code} in", values, "${ci.name}");
-                                return (Criteria) this;
-                                }
+        private Object value;
 
-                                public Criteria and${ci.name2}NotIn(List<${ci.javaType}> values) {
-                                addCriterion("${ci.code} not in", values, "${ci.name}");
-                                return (Criteria) this;
-                                }
+        private Object secondValue;
 
-                                public Criteria and${ci.name2}Between(${ci.javaType} value1, ${ci.javaType} value2) {
-                                addCriterion("${ci.code} between", value1, value2, "${ci.name}");
-                                return (Criteria) this;
-                                }
+        private boolean noValue;
 
-                                public Criteria and${ci.name2}NotBetween(${ci.javaType} value1, ${ci.javaType} value2) {
-                                addCriterion("${ci.code} not between", value1, value2, "${ci.name}");
-                                return (Criteria) this;
-                                }
+        private boolean singleValue;
 
-                            </#list>
-                            }
+        private boolean betweenValue;
 
-                            public static class Criteria extends GeneratedCriteria {
+        private boolean listValue;
 
-                            protected Criteria() {
-                            super();
-                            }
-                            }
+        private String typeHandler;
 
-                            public static class Criterion {
-                            private String condition;
+        public String getCondition() {
+            return condition;
+        }
 
-                            private Object value;
+        public Object getValue() {
+            return value;
+        }
 
-                            private Object secondValue;
+        public Object getSecondValue() {
+            return secondValue;
+        }
 
-                            private boolean noValue;
+        public boolean isNoValue() {
+            return noValue;
+        }
 
-                            private boolean singleValue;
+        public boolean isSingleValue() {
+            return singleValue;
+        }
 
-                            private boolean betweenValue;
+        public boolean isBetweenValue() {
+            return betweenValue;
+        }
 
-                            private boolean listValue;
+        public boolean isListValue() {
+            return listValue;
+        }
 
-                            private String typeHandler;
+        public String getTypeHandler() {
+            return typeHandler;
+        }
 
-                            public String getCondition() {
-                            return condition;
-                            }
+        protected Criterion(String condition) {
+            super();
+            this.condition = condition;
+            this.typeHandler = null;
+            this.noValue = true;
+        }
 
-                            public Object getValue() {
-                            return value;
-                            }
+        protected Criterion(String condition, Object value, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.typeHandler = typeHandler;
+            if (value instanceof List<?>) {
+                this.listValue = true;
+            } else {
+                this.singleValue = true;
+            }
+        }
 
-                            public Object getSecondValue() {
-                            return secondValue;
-                            }
+        protected Criterion(String condition, Object value) {
+            this(condition, value, null);
+        }
 
-                            public boolean isNoValue() {
-                            return noValue;
-                            }
+        protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
+            super();
+            this.condition = condition;
+            this.value = value;
+            this.secondValue = secondValue;
+            this.typeHandler = typeHandler;
+            this.betweenValue = true;
+        }
 
-                            public boolean isSingleValue() {
-                            return singleValue;
-                            }
-
-                            public boolean isBetweenValue() {
-                            return betweenValue;
-                            }
-
-                            public boolean isListValue() {
-                            return listValue;
-                            }
-
-                            public String getTypeHandler() {
-                            return typeHandler;
-                            }
-
-                            protected Criterion(String condition) {
-                            super();
-                            this.condition = condition;
-                            this.typeHandler = null;
-                            this.noValue = true;
-                            }
-
-                            protected Criterion(String condition, Object value, String typeHandler) {
-                            super();
-                            this.condition = condition;
-                            this.value = value;
-                            this.typeHandler = typeHandler;
-                            if (value instanceof List<?>) {
-                            this.listValue = true;
-                            } else {
-                            this.singleValue = true;
-                            }
-                            }
-
-                            protected Criterion(String condition, Object value) {
-                            this(condition, value, null);
-                            }
-
-                            protected Criterion(String condition, Object value, Object secondValue, String typeHandler) {
-                            super();
-                            this.condition = condition;
-                            this.value = value;
-                            this.secondValue = secondValue;
-                            this.typeHandler = typeHandler;
-                            this.betweenValue = true;
-                            }
-
-                            protected Criterion(String condition, Object value, Object secondValue) {
-                            this(condition, value, secondValue, null);
-                            }
-                            }
-                            }
+        protected Criterion(String condition, Object value, Object secondValue) {
+            this(condition, value, secondValue, null);
+        }
+    }
+}

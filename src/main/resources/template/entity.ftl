@@ -9,8 +9,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 
 /**
-* ${table.common!}
-*/
+ * ${table.common!}
+ */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -19,13 +19,14 @@ public class ${entityName} implements Serializable {
 
 <#list table.columns as ci>
     /**
-    * ${ci.comment}
-    */
+     * ${ci.comment}
+     */
     @Column(name = "${ci.code}")
     <#if ci.id>
-        @Id
+    @Id
     </#if>
     private ${ci.javaType} ${ci.name};
 
 </#list>
 }
+	

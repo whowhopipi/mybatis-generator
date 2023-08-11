@@ -21,9 +21,10 @@ public class ${entityName} implements Serializable {
     @ApiModelProperty(name = "${ci.name}" , value = "${ci.comment}")
     @Column(name = "${ci.code}")
     <#if ci.id>
-        @Id
+    @Id
     </#if>
     private ${ci.javaType} ${ci.name};
 
 </#list>
 }
+	
